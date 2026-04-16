@@ -405,36 +405,6 @@
     }
 
     /* ────────────────────────────────────────────
-       FOOTER
-    ──────────────────────────────────────────── */
-    .footer {
-      position: relative;
-      z-index: 1;
-      padding: 0 28px 28px;
-    }
-
-    .footer-box {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px 18px;
-      justify-content: space-between;
-      align-items: center;
-      padding: 16px 20px;
-      border-radius: 18px;
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.60);
-    }
-
-    code.inline {
-      padding: 2px 6px;
-      border-radius: 6px;
-      background: rgba(240, 236, 252, .92);
-      border: 1px solid var(--line);
-      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-      font-size: .88em;
-    }
-
-    /* ────────────────────────────────────────────
        MAP CARD
     ──────────────────────────────────────────── */
     .map-card {
@@ -625,9 +595,41 @@
       </div>
 
       <!-- ═══════════════════════════════════════
-           STATUS + UPLOAD
+           MAP
       ═══════════════════════════════════════ -->
       <div class="content">
+        <article class="map-card">
+          <p class="section-kicker">Getting there</p>
+          <h2>Redeemer Church &mdash; Foster Avenue, Nottingham NG9 1AE</h2>
+          <div class="map-wrap">
+            <!--
+              OpenStreetMap embed — completely free, no API key, no billing.
+              bbox = lon_min,lat_min,lon_max,lat_max centred on the church.
+              marker = lat,lon of Redeemer Church (52.9272306, -1.2183096).
+            -->
+            <iframe
+              src="https://www.openstreetmap.org/export/embed.html?bbox=-1.2243096%2C52.9232306%2C-1.2123096%2C52.9312306&layer=mapnik&marker=52.9272306%2C-1.2183096"
+              title="Map showing Redeemer Church Nottingham on Foster Avenue"
+              allowfullscreen=""
+              loading="lazy">
+            </iframe>
+          </div>
+          <div class="map-actions">
+            <a class="button button-secondary"
+               href="https://maps.google.com/?q=52.9272306,-1.2183096"
+               target="_blank" rel="noopener noreferrer">Open in Google Maps &#8599;</a>
+            <a class="button button-secondary"
+               href="https://www.google.com/maps/dir/?api=1&destination=52.9272306,-1.2183096"
+               target="_blank" rel="noopener noreferrer">Get directions &#8599;</a>
+          </div>
+          <p class="card-copy map-note">Free parking is available behind the church on <strong>Devonshire Avenue (NG9 1BS)</strong>, or up to 3 hours free at <strong>Sainsbury&rsquo;s, Beeston Retail Park (NG9 2LA)</strong> &mdash; a short walk away.</p>
+        </article>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           STATUS + UPLOAD
+      ═══════════════════════════════════════ -->
+      <div class="content" style="padding-top: 0;">
         <section class="status" aria-live="polite">
           <div id="badge" class="status-badge before">Checking…</div>
           <h2 id="statusTitle" class="status-title">Please wait</h2>
@@ -719,14 +721,6 @@
           </article>
 
         </section>
-      </div>
-
-      <!-- FOOTER -->
-      <div class="footer">
-        <div class="footer-box">
-          <p class="tiny">Static page for GitHub Pages. Set <code class="inline">dropboxFileRequestUrl</code> inside <code class="inline">CONFIG</code> at the bottom of this file to activate uploads.</p>
-          <p class="tiny">Main button = photo upload &nbsp;&middot;&nbsp; Small QR = Collection Pot</p>
-        </div>
       </div>
 
     </section>
