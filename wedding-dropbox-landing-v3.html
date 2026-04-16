@@ -1,0 +1,904 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tyrone &amp; Debs | Wedding Photos</title>
+  <meta name="robots" content="noindex, nofollow, noarchive, nosnippet" />
+  <meta name="description" content="Share your wedding photos privately with Tyrone and Debs." />
+  <style>
+    :root {
+      /* Shifted to match the invite's cool periwinkle / lavender watercolour palette */
+      --paper:    #f0edf8;
+      --paper-2:  #ece8f4;
+      --ink:      #1c1828;
+      --muted:    #5a506e;
+      --gold:     #b69445;
+      --gold-dark:#7e6030;
+      --gold-soft: rgba(182, 148, 69, .16);
+      --periwinkle: rgba(148, 162, 215, .34);
+      --lilac:    rgba(178, 162, 212, .30);
+      --line:     rgba(85, 70, 118, .14);
+      --shadow:   0 28px 64px rgba(28, 20, 50, .13);
+      --radius:   28px;
+      --ok:       #2c7257;
+      --warn:     #946400;
+      --closed:   #7a3f54;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      min-height: 100svh;
+      color: var(--ink);
+      font-family: "Iowan Old Style", "Palatino Linotype", "Book Antiqua", Georgia, serif;
+      background:
+        radial-gradient(ellipse at 12% 9%,  rgba(148, 162, 215, .36) 0%, transparent 32%),
+        radial-gradient(ellipse at 88% 7%,  rgba(182, 148, 69, .14) 0%, transparent 22%),
+        radial-gradient(ellipse at 6%  88%, rgba(182, 148, 69, .12) 0%, transparent 20%),
+        radial-gradient(ellipse at 90% 90%, rgba(148, 162, 215, .30) 0%, transparent 28%),
+        radial-gradient(ellipse at 50% 50%, rgba(178, 162, 212, .18) 0%, transparent 52%),
+        linear-gradient(148deg, #e9e4f4 0%, #f0edf8 50%, #eceff9 100%);
+      padding: 24px;
+    }
+
+    body::before,
+    body::after {
+      content: "";
+      position: fixed;
+      pointer-events: none;
+      z-index: 0;
+      opacity: .62;
+    }
+
+    body::before {
+      top: 0; left: 0;
+      width: 46vw; height: 46vw;
+      max-width: 450px; max-height: 450px;
+      background:
+        radial-gradient(circle at 42% 48%, var(--lilac), transparent 52%),
+        radial-gradient(circle at 20% 62%, var(--periwinkle), transparent 56%),
+        radial-gradient(circle at 14% 16%, rgba(182,148,69,.18), transparent 14%);
+      filter: blur(10px);
+    }
+
+    body::after {
+      right: 0; bottom: 0;
+      width: 44vw; height: 48vw;
+      max-width: 420px; max-height: 460px;
+      background:
+        radial-gradient(circle at 56% 30%, rgba(182,148,69,.17), transparent 14%),
+        radial-gradient(circle at 38% 55%, var(--periwinkle), transparent 50%),
+        radial-gradient(circle at 55% 72%, var(--lilac), transparent 54%);
+      filter: blur(12px);
+    }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      width: min(1000px, 100%);
+      margin: 0 auto;
+    }
+
+    /* ────────────────────────────────────────────
+       INVITE CARD
+    ──────────────────────────────────────────── */
+    .invite-card {
+      position: relative;
+      overflow: hidden;
+      border-radius: 36px;
+      border: 1px solid var(--line);
+      background:
+        radial-gradient(ellipse at 22% 10%, rgba(148, 162, 215, .22), transparent 30%),
+        radial-gradient(ellipse at 80% 10%, rgba(182,148,69,.10),      transparent 22%),
+        radial-gradient(ellipse at 78% 90%, rgba(182,148,69,.07),      transparent 18%),
+        radial-gradient(ellipse at 16% 90%, rgba(148, 162, 215, .18),  transparent 24%),
+        linear-gradient(168deg, rgba(255,255,255,.88), rgba(255,255,255,.74));
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(14px);
+    }
+
+    /* ────────────────────────────────────────────
+       BOTANICAL CORNER DECORATIONS
+       (modelled on the olive / gold sprigs on the invite)
+    ──────────────────────────────────────────── */
+    .botanical {
+      position: absolute;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .botanical-tl { top: -6px;  left: -6px;  width: 210px; height: 240px; opacity: .52; }
+    .botanical-tr { top: -6px;  right: -6px; width: 210px; height: 240px; opacity: .52; transform: scaleX(-1); }
+    .botanical-bl { bottom: -6px; left: -6px;  width: 160px; height: 185px; opacity: .38; transform: scaleY(-1); }
+    .botanical-br { bottom: -6px; right: -6px; width: 160px; height: 185px; opacity: .38; transform: scale(-1,-1); }
+
+    /* ────────────────────────────────────────────
+       HERO
+    ──────────────────────────────────────────── */
+    .hero {
+      position: relative;
+      z-index: 1;
+      padding: 52px 34px 32px;
+      text-align: center;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .hero-bg-monogram {
+      position: absolute;
+      inset: 36px 0 auto 0;
+      text-align: center;
+      font-size: clamp(5rem, 19vw, 10.5rem);
+      line-height: 1;
+      letter-spacing: .04em;
+      color: rgba(28, 24, 40, .038);
+      pointer-events: none;
+      font-weight: 700;
+      user-select: none;
+    }
+
+    .overline, .section-kicker {
+      margin: 0;
+      font-size: .8rem;
+      text-transform: uppercase;
+      letter-spacing: .40em;
+      color: var(--muted);
+    }
+
+    .title {
+      position: relative;
+      margin: 16px 0 6px;
+      font-size: clamp(2.7rem, 9vw, 5.4rem);
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      line-height: .95;
+      font-weight: 700;
+    }
+
+    .amp {
+      color: var(--gold);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    .names {
+      position: relative;
+      margin: 0 0 18px;
+      font-size: clamp(1.1rem, 3.4vw, 1.7rem);
+      letter-spacing: .34em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .date-line {
+      display: inline-flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      margin: 12px auto 0;
+      padding: 10px 18px;
+      border-top: 1px solid var(--line);
+      border-bottom: 1px solid var(--line);
+      font-size: .98rem;
+      letter-spacing: .18em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    .event-copy {
+      margin: 22px auto 0;
+      max-width: 40rem;
+      color: var(--muted);
+      font-size: 1.04rem;
+      line-height: 1.78;
+    }
+
+    /* ────────────────────────────────────────────
+       CONTENT
+    ──────────────────────────────────────────── */
+    .content {
+      position: relative;
+      z-index: 1;
+      padding: 28px;
+      display: grid;
+      gap: 20px;
+    }
+
+    /* ────────────────────────────────────────────
+       STATUS BLOCK
+    ──────────────────────────────────────────── */
+    .status {
+      display: grid;
+      gap: 14px;
+      padding: 26px;
+      border-radius: 24px;
+      background: rgba(255,255,255,.74);
+      border: 1px solid var(--line);
+    }
+
+    .status-badge {
+      width: fit-content;
+      border-radius: 999px;
+      padding: 7px 15px;
+      font-size: .88rem;
+      font-weight: 700;
+      letter-spacing: .04em;
+    }
+
+    .status-badge.open   { background: rgba(44,114,87,.10);  color: var(--ok); }
+    .status-badge.before { background: rgba(148,100,0,.10);  color: var(--warn); }
+    .status-badge.after  { background: rgba(122,63,84,.10);  color: var(--closed); }
+    .status-badge.error  { background: rgba(122,63,84,.10);  color: var(--closed); }
+
+    .status-title {
+      margin: 0;
+      font-size: clamp(1.45rem, 4vw, 1.95rem);
+      line-height: 1.15;
+    }
+
+    .status-copy, .card-copy, .tiny {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.76;
+    }
+
+    /* ────────────────────────────────────────────
+       COUNTDOWN
+    ──────────────────────────────────────────── */
+    .countdown {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 12px;
+      margin-top: 2px;
+    }
+
+    .countdown-item {
+      padding: 16px 10px;
+      text-align: center;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(242, 238, 252, .86);
+    }
+
+    .countdown-value {
+      display: block;
+      font-size: clamp(1.4rem, 5vw, 2rem);
+      font-weight: 700;
+    }
+
+    .countdown-label {
+      display: block;
+      margin-top: 4px;
+      font-size: .72rem;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* ────────────────────────────────────────────
+       BUTTONS
+    ──────────────────────────────────────────── */
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      padding-top: 2px;
+    }
+
+    .button {
+      appearance: none;
+      border: 0;
+      border-radius: 999px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 54px;
+      padding: 0 26px;
+      font: inherit;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    .button:hover { transform: translateY(-2px); }
+
+    .button-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--gold-dark), var(--gold));
+      box-shadow: 0 14px 30px rgba(126, 96, 48, .28);
+    }
+
+    .button-secondary {
+      color: var(--ink);
+      background: rgba(255,255,255,.88);
+      border: 1px solid var(--line);
+    }
+
+    .hidden { display: none !important; }
+
+    /* ────────────────────────────────────────────
+       INFO GRID  (3 columns on desktop)
+    ──────────────────────────────────────────── */
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1.3fr 0.9fr 0.9fr;
+      gap: 18px;
+    }
+
+    .info-card {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.64);
+    }
+
+    .info-card h2 {
+      margin: 8px 0 10px;
+      font-size: 1.36rem;
+      line-height: 1.22;
+    }
+
+    .facts {
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .fact {
+      padding-top: 12px;
+      border-top: 1px solid rgba(85, 70, 118, .10);
+    }
+
+    .fact strong {
+      display: block;
+      margin-bottom: 4px;
+      font-size: .95rem;
+      letter-spacing: .04em;
+    }
+
+    /* ────────────────────────────────────────────
+       COLLECTION POT ROW
+    ──────────────────────────────────────────── */
+    .collection-row {
+      display: grid;
+      grid-template-columns: 100px 1fr;
+      gap: 14px;
+      align-items: center;
+      margin-top: 16px;
+      padding: 12px;
+      border-radius: 16px;
+      background: rgba(240, 236, 252, .80);
+      border: 1px solid var(--line);
+    }
+
+    .collection-row img {
+      width: 100%;
+      aspect-ratio: 1;
+      border-radius: 12px;
+      background: white;
+      padding: 6px;
+      border: 1px solid rgba(85, 70, 118, .12);
+    }
+
+    .micro-label {
+      display: inline-block;
+      margin-bottom: 6px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: var(--gold-soft);
+      color: var(--gold-dark);
+      font-size: .72rem;
+      font-weight: 700;
+      letter-spacing: .13em;
+      text-transform: uppercase;
+    }
+
+    .link {
+      color: var(--gold-dark);
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+      word-break: break-word;
+    }
+
+    /* ────────────────────────────────────────────
+       FOOTER
+    ──────────────────────────────────────────── */
+    .footer {
+      position: relative;
+      z-index: 1;
+      padding: 0 28px 28px;
+    }
+
+    .footer-box {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px 18px;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 20px;
+      border-radius: 18px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.60);
+    }
+
+    code.inline {
+      padding: 2px 6px;
+      border-radius: 6px;
+      background: rgba(240, 236, 252, .92);
+      border: 1px solid var(--line);
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      font-size: .88em;
+    }
+
+    /* ────────────────────────────────────────────
+       MAP CARD
+    ──────────────────────────────────────────── */
+    .map-card {
+      padding: 22px;
+      border-radius: 22px;
+      border: 1px solid var(--line);
+      background: rgba(255,255,255,.64);
+    }
+
+    .map-card h2 {
+      margin: 8px 0 14px;
+      font-size: 1.36rem;
+      line-height: 1.22;
+    }
+
+    .map-wrap {
+      position: relative;
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid var(--line);
+      height: 300px;
+    }
+
+    .map-wrap iframe {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+      display: block;
+    }
+
+    .map-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 14px;
+    }
+
+    .map-note {
+      margin-top: 12px !important;
+      font-size: .95rem;
+    }
+
+    @media (max-width: 600px) {
+      .map-wrap { height: 240px; }
+      .map-actions { flex-direction: column; }
+      .map-actions .button { width: 100%; }
+    }
+
+    /* ────────────────────────────────────────────
+       RESPONSIVE
+    ──────────────────────────────────────────── */
+    @media (max-width: 880px) {
+      .info-grid { grid-template-columns: 1fr 1fr; }
+      .info-grid .info-card:first-child { grid-column: 1 / -1; }
+    }
+
+    @media (max-width: 760px) {
+      body { padding: 14px; }
+      .hero { padding: 38px 20px 28px; }
+      .content { padding: 18px; gap: 16px; }
+      .footer { padding: 0 18px 18px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .info-grid .info-card:first-child { grid-column: auto; }
+      .botanical-tl, .botanical-tr { width: 140px; height: 162px; }
+      .botanical-bl, .botanical-br { width: 110px; height: 128px; }
+    }
+
+    @media (max-width: 600px) {
+      .countdown { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .actions { flex-direction: column; }
+      .button { width: 100%; }
+      .date-line { letter-spacing: .10em; font-size: .92rem; }
+      .names { letter-spacing: .18em; }
+      .title { letter-spacing: .04em; }
+      .footer-box { align-items: flex-start; }
+      .collection-row { grid-template-columns: 82px 1fr; }
+    }
+  </style>
+</head>
+<body>
+  <main class="page">
+    <section class="invite-card">
+
+      <!--
+        ═══════════════════════════════════════════════════
+        BOTANICAL CORNERS
+        Modelled on the olive / gold leaf sprigs on the
+        physical invite cards. All four corners share the
+        same SVG path set; CSS transforms mirror/flip them.
+        ═══════════════════════════════════════════════════
+      -->
+      <!-- Top-left -->
+      <svg class="botanical botanical-tl" viewBox="0 0 210 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <!-- main stem curving down the left edge -->
+        <path d="M 8 6 C 24 32 38 65 46 105 C 54 144 58 176 63 208" stroke="#b69445" stroke-width="1.5" stroke-linecap="round"/>
+        <!-- upper branch sweeping right -->
+        <path d="M 20 38 C 48 26 78 20 108 18 C 132 16 154 18 172 26" stroke="#b69445" stroke-width="1.2" stroke-linecap="round"/>
+        <!-- leaves on upper branch -->
+        <path d="M 40 31 C 44 22 55 18 64 22 C 55 25 45 29 40 31 Z" fill="#b69445" opacity=".68"/>
+        <path d="M 66 23 C 72 14 83 10 92 14 C 83 17 72 21 66 23 Z" fill="#b69445" opacity=".63"/>
+        <path d="M 95 19 C 101 10 113 7 122 11 C 113 14 102 18 95 19 Z" fill="#b69445" opacity=".57"/>
+        <path d="M 124 18 C 131 9 143 7 152 11 C 143 14 131 17 124 18 Z" fill="#b69445" opacity=".50"/>
+        <!-- tip leaf cluster -->
+        <path d="M 155 22 C 163 13 174 12 182 16 C 173 19 163 21 155 22 Z" fill="#b69445" opacity=".43"/>
+        <path d="M 178 20 C 186 12 195 11 202 15 C 195 18 186 20 178 20 Z" fill="#b69445" opacity=".36"/>
+        <!-- mid-left branch going back toward the edge -->
+        <path d="M 36 78 C 20 70 8 60 2 47" stroke="#b69445" stroke-width="1.1" stroke-linecap="round"/>
+        <path d="M 22 64 C 16 56 13 48 15 42 C 18 48 20 56 22 64 Z" fill="#b69445" opacity=".50"/>
+        <path d="M 10 56 C 4 48 2 41 4 35 C 7 41 9 49 10 56 Z" fill="#b69445" opacity=".44"/>
+        <!-- berry cluster on mid branch -->
+        <circle cx="3"  cy="49" r="3"   fill="#b69445" opacity=".62"/>
+        <circle cx="9"  cy="53" r="2.5" fill="#b69445" opacity=".56"/>
+        <circle cx="16" cy="58" r="3"   fill="#b69445" opacity=".50"/>
+        <!-- lower branch going right -->
+        <path d="M 43 116 C 66 106 88 100 114 96" stroke="#b69445" stroke-width="1.0" stroke-linecap="round"/>
+        <path d="M 64 109 C 70 100 81 97 90 100 C 81 103 70 107 64 109 Z" fill="#b69445" opacity=".46"/>
+        <path d="M 91 99  C 98  90 109 88 118 92  C 109 95 98 98 91 99 Z" fill="#b69445" opacity=".40"/>
+        <!-- gold scatter flecks across the top-right area -->
+        <circle cx="125" cy="14" r="2"   fill="#b69445" opacity=".46"/>
+        <circle cx="143" cy="8"  r="1.5" fill="#b69445" opacity=".40"/>
+        <circle cx="161" cy="15" r="2.5" fill="#b69445" opacity=".44"/>
+        <circle cx="176" cy="10" r="1.5" fill="#b69445" opacity=".34"/>
+        <circle cx="152" cy="5"  r="1"   fill="#b69445" opacity=".36"/>
+      </svg>
+
+      <!-- Top-right  (CSS: scaleX(-1)) -->
+      <svg class="botanical botanical-tr" viewBox="0 0 210 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 8 6 C 24 32 38 65 46 105 C 54 144 58 176 63 208" stroke="#b69445" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M 20 38 C 48 26 78 20 108 18 C 132 16 154 18 172 26" stroke="#b69445" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M 40 31 C 44 22 55 18 64 22 C 55 25 45 29 40 31 Z" fill="#b69445" opacity=".68"/>
+        <path d="M 66 23 C 72 14 83 10 92 14 C 83 17 72 21 66 23 Z" fill="#b69445" opacity=".63"/>
+        <path d="M 95 19 C 101 10 113 7 122 11 C 113 14 102 18 95 19 Z" fill="#b69445" opacity=".57"/>
+        <path d="M 124 18 C 131 9 143 7 152 11 C 143 14 131 17 124 18 Z" fill="#b69445" opacity=".50"/>
+        <path d="M 155 22 C 163 13 174 12 182 16 C 173 19 163 21 155 22 Z" fill="#b69445" opacity=".43"/>
+        <path d="M 178 20 C 186 12 195 11 202 15 C 195 18 186 20 178 20 Z" fill="#b69445" opacity=".36"/>
+        <path d="M 36 78 C 20 70 8 60 2 47" stroke="#b69445" stroke-width="1.1" stroke-linecap="round"/>
+        <path d="M 22 64 C 16 56 13 48 15 42 C 18 48 20 56 22 64 Z" fill="#b69445" opacity=".50"/>
+        <path d="M 10 56 C 4 48 2 41 4 35 C 7 41 9 49 10 56 Z" fill="#b69445" opacity=".44"/>
+        <circle cx="3"  cy="49" r="3"   fill="#b69445" opacity=".62"/>
+        <circle cx="9"  cy="53" r="2.5" fill="#b69445" opacity=".56"/>
+        <circle cx="16" cy="58" r="3"   fill="#b69445" opacity=".50"/>
+        <path d="M 43 116 C 66 106 88 100 114 96" stroke="#b69445" stroke-width="1.0" stroke-linecap="round"/>
+        <path d="M 64 109 C 70 100 81 97 90 100 C 81 103 70 107 64 109 Z" fill="#b69445" opacity=".46"/>
+        <path d="M 91 99  C 98  90 109 88 118 92  C 109 95 98 98 91 99 Z" fill="#b69445" opacity=".40"/>
+        <circle cx="125" cy="14" r="2"   fill="#b69445" opacity=".46"/>
+        <circle cx="143" cy="8"  r="1.5" fill="#b69445" opacity=".40"/>
+        <circle cx="161" cy="15" r="2.5" fill="#b69445" opacity=".44"/>
+        <circle cx="176" cy="10" r="1.5" fill="#b69445" opacity=".34"/>
+        <circle cx="152" cy="5"  r="1"   fill="#b69445" opacity=".36"/>
+      </svg>
+
+      <!-- Bottom-left  (CSS: scaleY(-1)) -->
+      <svg class="botanical botanical-bl" viewBox="0 0 210 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 8 6 C 24 32 38 65 46 105 C 54 144 58 176 63 208" stroke="#b69445" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M 20 38 C 48 26 78 20 108 18 C 132 16 154 18 172 26" stroke="#b69445" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M 40 31 C 44 22 55 18 64 22 C 55 25 45 29 40 31 Z" fill="#b69445" opacity=".68"/>
+        <path d="M 66 23 C 72 14 83 10 92 14 C 83 17 72 21 66 23 Z" fill="#b69445" opacity=".60"/>
+        <path d="M 36 78 C 20 70 8 60 2 47" stroke="#b69445" stroke-width="1.1" stroke-linecap="round"/>
+        <circle cx="3"  cy="49" r="3"   fill="#b69445" opacity=".56"/>
+        <circle cx="9"  cy="53" r="2.5" fill="#b69445" opacity=".50"/>
+        <circle cx="16" cy="58" r="3"   fill="#b69445" opacity=".44"/>
+      </svg>
+
+      <!-- Bottom-right  (CSS: scale(-1,-1)) -->
+      <svg class="botanical botanical-br" viewBox="0 0 210 240" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+        <path d="M 8 6 C 24 32 38 65 46 105 C 54 144 58 176 63 208" stroke="#b69445" stroke-width="1.5" stroke-linecap="round"/>
+        <path d="M 20 38 C 48 26 78 20 108 18 C 132 16 154 18 172 26" stroke="#b69445" stroke-width="1.2" stroke-linecap="round"/>
+        <path d="M 40 31 C 44 22 55 18 64 22 C 55 25 45 29 40 31 Z" fill="#b69445" opacity=".68"/>
+        <path d="M 66 23 C 72 14 83 10 92 14 C 83 17 72 21 66 23 Z" fill="#b69445" opacity=".60"/>
+        <path d="M 36 78 C 20 70 8 60 2 47" stroke="#b69445" stroke-width="1.1" stroke-linecap="round"/>
+        <circle cx="3"  cy="49" r="3"   fill="#b69445" opacity=".56"/>
+        <circle cx="9"  cy="53" r="2.5" fill="#b69445" opacity=".50"/>
+        <circle cx="16" cy="58" r="3"   fill="#b69445" opacity=".44"/>
+      </svg>
+
+      <!-- ═══════════════════════════════════════
+           HERO
+      ═══════════════════════════════════════ -->
+      <div class="hero">
+        <p class="overline">Wedding photo upload</p>
+        <div class="hero-bg-monogram" aria-hidden="true">T &amp; D</div>
+        <h1 class="title">T <span class="amp">&amp;</span> D</h1>
+        <p class="names">Tyrone &amp; Debs</p>
+        <div class="date-line">Saturday 23 May 2026 &nbsp;·&nbsp; Redeemer Church &nbsp;·&nbsp; Nottingham</div>
+        <p class="event-copy" id="subtitle"></p>
+      </div>
+
+      <!-- ═══════════════════════════════════════
+           STATUS + UPLOAD
+      ═══════════════════════════════════════ -->
+      <div class="content">
+        <section class="status" aria-live="polite">
+          <div id="badge" class="status-badge before">Checking…</div>
+          <h2 id="statusTitle" class="status-title">Please wait</h2>
+          <p id="statusCopy" class="status-copy">We\u2019re checking whether uploads are currently open.</p>
+
+          <div id="countdown" class="countdown hidden" aria-label="Countdown timer">
+            <div class="countdown-item"><span class="countdown-value" id="days">00</span><span class="countdown-label">Days</span></div>
+            <div class="countdown-item"><span class="countdown-value" id="hours">00</span><span class="countdown-label">Hours</span></div>
+            <div class="countdown-item"><span class="countdown-value" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
+            <div class="countdown-item"><span class="countdown-value" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
+          </div>
+
+          <div class="actions">
+            <a id="uploadButton" class="button button-primary hidden" href="#" rel="noopener noreferrer">Open photo upload</a>
+            <button id="copyButton" class="button button-secondary hidden" type="button">Copy upload link</button>
+          </div>
+
+          <p class="tiny" id="scheduleLine"></p>
+          <p class="tiny" id="configHint"></p>
+        </section>
+
+        <!-- ═══════════════════════════════════════
+             INFO CARDS  (3 columns on desktop)
+        ═══════════════════════════════════════ -->
+        <section class="info-grid">
+
+          <!-- 1 · Wedding Details -->
+          <article class="info-card">
+            <p class="section-kicker">The day</p>
+            <h2>Ceremony &amp; cake celebration</h2>
+            <p class="card-copy">A quick reference for the day — the button above is all you need for photo uploads.</p>
+            <div class="facts">
+              <div class="fact">
+                <strong>Service starts</strong>
+                <p class="card-copy">1:00pm on Saturday 23 May 2026. The church will be open from 12:30pm.</p>
+              </div>
+              <div class="fact">
+                <strong>Location</strong>
+                <p class="card-copy">Redeemer Church, Foster Avenue, Nottingham, NG9 1AE.</p>
+              </div>
+              <div class="fact">
+                <strong>After the ceremony</strong>
+                <p class="card-copy">Cake celebration with tea, coffee and refreshments &#8212; finishing at around 3:30pm.</p>
+              </div>
+              <div class="fact">
+                <strong>Parking</strong>
+                <p class="card-copy">Free car park behind the church on Devonshire Avenue (NG9 1BS). Also paid parking on Foster Avenue (NG9 1AB), or up to 3 hours free at Sainsbury\u2019s on the Beeston Retail Park (NG9 2LA).</p>
+              </div>
+              <div class="fact">
+                <strong>Get in touch</strong>
+                <p class="card-copy"><a class="link" href="mailto:debsandtyrone@gmail.com">debsandtyrone@gmail.com</a></p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 2 · Accommodation -->
+          <article class="info-card">
+            <p class="section-kicker">Staying over?</p>
+            <h2>Nearby accommodation</h2>
+            <p class="card-copy">If you\u2019re travelling from further afield, here are a couple of nearby options within about ten minutes of the church.</p>
+            <div class="facts">
+              <div class="fact">
+                <strong>Travelodge Beeston</strong>
+                <p class="card-copy">Approximately 10 minutes from the church.<br>Nottingham NG8 2NR.</p>
+              </div>
+              <div class="fact">
+                <strong>Orchard Hotel</strong>
+                <p class="card-copy">On the University Park campus, approximately 10 minutes\u2019 drive.<br>Nottingham NG7 2RJ.</p>
+              </div>
+            </div>
+          </article>
+
+          <!-- 3 · Collection Pot -->
+          <article class="info-card">
+            <p class="section-kicker">Collection Pot</p>
+            <h2>Messages &amp; gifts</h2>
+            <p class="card-copy">Leave us a message or contribute towards our honeymoon and home. This is completely separate from the photo upload.</p>
+
+            <div class="collection-row">
+              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACe0lEQVR4nO2bTYrcMBBGX0WGXtqQA8xR3DfIkXKm3MA6Sh9gwFoOqPmykGR7MhkmIR6nDVUL05bfoqD4VD9Sm/gbi1/+CgfnnXfeeeedd/493qp1AHeza1p/tW/XA/1xfmd+lCTNQByCgLtBukgTQZKk1/xn++P8znyqCrVrMoM+Y1fuda0K+0h/nN+H796s9M8dcXiG+JQ7kY71x/lP54MYbxdpSh12/f/+OP8PfNNvLyAB448uE59eDPoZA9iOQB7Nf+f/iI9mZja01fF2EeOtFdFmZsf64/xOfNHvRqFxCIgEgherwj7OH+f35SnNzzgDEGqTRJ/Lo762JknTo/nv/AdWA6eMpAw1yEHtldIdlxbZ43syvsV3XhZ6SVOfa1TptTWP7yl5u/aLflOHfZ+DIHVINzPicPf66px81W8R7BxUHkXE61fPv2flX9VXS1U1EUp8KeMOz79n5bf6BWipN6OpV6m08Pr5tDztcChoDWgpt9bteizVtcf3fHzbn5c0O/W5ipheNbSef0/LN/0uUS1aLdJtTBWxx/e0/Hi7lIao9Ef29GLlpL+U00Attx7Uf+ffs7V+bkrWNutOyybt+/MZ+e35fryGLABBRnGYZWBAGrBxOsIf5/fll/lztXUqydr6Anj+PSVf9NumjyErWsiQDMVvzwbpawZCO2p4NP+d/8A2/ZHWMnkZR6+jK8+/Z+bTcsM5dTDeOsyGIKKZbb8+qv/O/97e3J+MAyZ6YSRDcO8Uh8P8cf6z+Xb1mVEZotVLlN7/npL/9f6kABmE+hjngXIn+hh/nN+XX84XAHh9VgRtvjH7/PmkvPn/u5133nnnnXf+cP4nV1L/2bCXDtwAAAAASUVORK5CYII=" alt="QR code for the Collection Pot" />
+              <div>
+                <span class="micro-label">Separate QR</span>
+                <p class="card-copy">Scan for the Collection Pot only, or use the link below.</p>
+                <p class="card-copy" style="margin-top: 8px;">
+                  <a class="link" href="https://app.collectionpot.com/pot/3443293" target="_blank" rel="noopener noreferrer">Open Collection Pot &#8599;</a>
+                </p>
+              </div>
+            </div>
+          </article>
+
+        </section>
+      </div>
+
+      <!-- FOOTER -->
+      <div class="footer">
+        <div class="footer-box">
+          <p class="tiny">Static page for GitHub Pages. Set <code class="inline">dropboxFileRequestUrl</code> inside <code class="inline">CONFIG</code> at the bottom of this file to activate uploads.</p>
+          <p class="tiny">Main button = photo upload &nbsp;&middot;&nbsp; Small QR = Collection Pot</p>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <script>
+    // ─────────────────────────────────────────────────────────────────────────
+    // CONFIGURATION
+    //
+    // STORAGE: This page uses Dropbox File Request — the simplest free option:
+    //   • Guests don't need a Dropbox account to upload
+    //   • Photos land directly in your Dropbox folder
+    //   • Free Dropbox gives you 2 GB (fine for ~50–80 guests on free plan)
+    //
+    // HOW TO GET YOUR DROPBOX FILE REQUEST LINK:
+    //   1. Go to dropbox.com  →  File requests  →  Create a request
+    //   2. Name it "Tyrone & Debs Wedding Photos"
+    //   3. Click "Create"  →  copy the sharing URL
+    //   4. Paste it into dropboxFileRequestUrl below
+    //
+    // ALTERNATIVE: Google Photos shared album (15 GB free):
+    //   Create a shared album  →  turn on "allow anyone with the link to add photos"
+    //   →  paste that URL here instead
+    // ─────────────────────────────────────────────────────────────────────────
+    const CONFIG = {
+      coupleNames:           'Tyrone \u0026 Debs',
+      eventLabel:            'Tyrone \u0026 Debs Wedding',
+      openAt:                '2026-05-23T00:01:00+01:00',
+      closeAt:               '2026-05-26T23:00:00+01:00',
+      dropboxFileRequestUrl: 'https://www.dropbox.com/request/zygp8o0w2xbzagu853ol',
+      uploadPageLabel:       'Open photo upload',
+      introText:             'We\u2019d love to see the candid moments you captured on our wedding day. Your photos go into our private Dropbox request \u2014 only we can review them unless we choose to share them later.',
+      uploadTimezone:        'Europe/London'
+    };
+
+    // ─── helpers ─────────────────────────────────────────────────────────────
+    const $ = (id) => document.getElementById(id);
+
+    const els = {
+      subtitle:     $('subtitle'),
+      badge:        $('badge'),
+      statusTitle:  $('statusTitle'),
+      statusCopy:   $('statusCopy'),
+      countdown:    $('countdown'),
+      days:         $('days'),
+      hours:        $('hours'),
+      minutes:      $('minutes'),
+      seconds:      $('seconds'),
+      uploadButton: $('uploadButton'),
+      copyButton:   $('copyButton'),
+      scheduleLine: $('scheduleLine'),
+      configHint:   $('configHint')
+    };
+
+    const openTime  = new Date(CONFIG.openAt);
+    const closeTime = new Date(CONFIG.closeAt);
+
+    function isConfigured() {
+      return CONFIG.dropboxFileRequestUrl &&
+             !CONFIG.dropboxFileRequestUrl.includes('PASTE_YOUR_DROPBOX');
+    }
+
+    function formatDate(date) {
+      return new Intl.DateTimeFormat('en-GB', {
+        dateStyle:  'full',
+        timeStyle:  'short',
+        timeZone:   CONFIG.uploadTimezone
+      }).format(date);
+    }
+
+    function setCountdown(msRemaining) {
+      const total   = Math.max(0, Math.floor(msRemaining / 1000));
+      const d       = Math.floor(total / 86400);
+      const h       = Math.floor((total % 86400) / 3600);
+      const m       = Math.floor((total % 3600) / 60);
+      const s       = total % 60;
+      els.days.textContent    = String(d).padStart(2, '0');
+      els.hours.textContent   = String(h).padStart(2, '0');
+      els.minutes.textContent = String(m).padStart(2, '0');
+      els.seconds.textContent = String(s).padStart(2, '0');
+    }
+
+    // ─── state renderers ─────────────────────────────────────────────────────
+    function showBefore(now) {
+      els.badge.className          = 'status-badge before';
+      els.badge.textContent        = 'Opens soon';
+      els.statusTitle.textContent  = 'Photo uploads aren\u2019t open yet';
+      els.statusCopy.textContent   = 'Please come back on the day. We\u2019ll only open this during the window we\u2019ve chosen.';
+      els.countdown.classList.remove('hidden');
+      els.uploadButton.classList.add('hidden');
+      els.copyButton.classList.add('hidden');
+      setCountdown(openTime - now);
+    }
+
+    function showOpen(now) {
+      els.badge.className          = 'status-badge open';
+      els.badge.textContent        = 'Uploads open';
+      els.statusTitle.textContent  = 'You can upload your wedding photos now';
+      els.statusCopy.textContent   = 'Thank you for celebrating with us. Tap the button below and Dropbox will handle the upload securely \u2014 no Dropbox account needed.';
+      els.countdown.classList.remove('hidden');
+      els.uploadButton.classList.remove('hidden');
+      els.copyButton.classList.remove('hidden');
+      els.uploadButton.href        = CONFIG.dropboxFileRequestUrl;
+      els.uploadButton.textContent = CONFIG.uploadPageLabel;
+      setCountdown(closeTime - now);
+    }
+
+    function showAfter() {
+      els.badge.className          = 'status-badge after';
+      els.badge.textContent        = 'Uploads closed';
+      els.statusTitle.textContent  = 'This upload window has now closed';
+      els.statusCopy.textContent   = 'Thank you for celebrating with us \u2014 we\u2019ve now closed the Dropbox request.';
+      els.countdown.classList.add('hidden');
+      els.uploadButton.classList.add('hidden');
+      els.copyButton.classList.add('hidden');
+    }
+
+    function showError(message) {
+      els.badge.className          = 'status-badge error';
+      els.badge.textContent        = 'Setup needed';
+      els.statusTitle.textContent  = 'This page still needs one setting';
+      els.statusCopy.textContent   = message;
+      els.countdown.classList.add('hidden');
+      els.uploadButton.classList.add('hidden');
+      els.copyButton.classList.add('hidden');
+    }
+
+    // ─── main render (called every second) ───────────────────────────────────
+    function render() {
+      els.subtitle.textContent     = CONFIG.introText;
+      els.scheduleLine.textContent =
+        `Upload window: ${formatDate(openTime)} to ${formatDate(closeTime)} (${CONFIG.uploadTimezone}).`;
+
+      if (!isConfigured()) {
+        els.configHint.textContent =
+          'Add your Dropbox File Request link in CONFIG.dropboxFileRequestUrl before publishing.';
+        showError(
+          'Paste your Dropbox File Request URL into the CONFIG object near the bottom of the file.'
+        );
+        return;
+      }
+
+      els.configHint.textContent = '';
+
+      const now = new Date();
+      if (
+        Number.isNaN(openTime.valueOf()) ||
+        Number.isNaN(closeTime.valueOf()) ||
+        openTime >= closeTime
+      ) {
+        showError('Check the openAt and closeAt dates in the CONFIG object.');
+        return;
+      }
+
+      if      (now < openTime)       showBefore(now);
+      else if (now <= closeTime)     showOpen(now);
+      else                           showAfter();
+    }
+
+    // ─── copy button ─────────────────────────────────────────────────────────
+    els.copyButton.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(CONFIG.dropboxFileRequestUrl);
+        const orig = els.copyButton.textContent;
+        els.copyButton.textContent = 'Link copied \u2713';
+        setTimeout(() => { els.copyButton.textContent = orig; }, 1800);
+      } catch {
+        window.prompt('Copy this upload link:', CONFIG.dropboxFileRequestUrl);
+      }
+    });
+
+    render();
+    setInterval(render, 1000);
+  </script>
+</bod
