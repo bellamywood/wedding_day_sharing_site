@@ -344,6 +344,16 @@
       letter-spacing: .04em;
     }
 
+    /* ── INFO GRID 2 (Plan of the day + Staying over, side by side) ── */
+    .info-grid-2 {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
+    }
+    @media (max-width: 760px) {
+      .info-grid-2 { grid-template-columns: 1fr; }
+    }
+
     /* ── COLLECTION POT ── */
     .collection-row {
       display: grid;
@@ -487,8 +497,51 @@
         <p class="event-copy" id="subtitle"></p>
       </div>
 
-      <!-- MAP -->
+      <!-- 1 · PHOTO UPLOADS -->
       <div class="content">
+        <section class="status" aria-live="polite">
+          <div id="badge" class="status-badge before">Checking&hellip;</div>
+          <h2 id="statusTitle" class="status-title">Please wait</h2>
+          <p id="statusCopy" class="status-copy"></p>
+
+          <div id="countdown" class="countdown hidden" aria-label="Countdown timer">
+            <div class="countdown-item"><span class="countdown-value" id="days">00</span><span class="countdown-label">Days</span></div>
+            <div class="countdown-item"><span class="countdown-value" id="hours">00</span><span class="countdown-label">Hours</span></div>
+            <div class="countdown-item"><span class="countdown-value" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
+            <div class="countdown-item"><span class="countdown-value" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
+          </div>
+
+          <div class="actions">
+            <a id="uploadButton" class="button button-primary hidden" href="#" rel="noopener noreferrer">Open photo upload</a>
+            <button id="copyButton" class="button button-secondary hidden" type="button">Copy upload link</button>
+          </div>
+
+          <p class="tiny" id="scheduleLine"></p>
+          <p class="tiny" id="configHint"></p>
+        </section>
+      </div>
+
+      <!-- 2 · MESSAGES & GIFTS -->
+      <div class="content" style="padding-top: 0;">
+        <article class="info-card">
+          <p class="section-kicker">Virtual Guestbook and Gift Pot</p>
+          <h2>Messages &amp; gifts</h2>
+          <p class="card-copy">We'd love for you all to leave a message for us for our special day. You can do this by clicking the link. If you would like to give us a gift towards our honey moon or home, you can do that here too - please do not feel like you have to.</p>
+          <div class="collection-row">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACe0lEQVR4nO2bTYrcMBBGX0WGXtqQA8xR3DfIkXKm3MA6Sh9gwFoOqPmykGR7MhkmIR6nDVUL05bfoqD4VD9Sm/gbi1/+CgfnnXfeeeedd/493qp1AHeza1p/tW/XA/1xfmd+lCTNQByCgLtBukgTQZKk1/xn++P8znyqCrVrMoM+Y1fuda0K+0h/nN+H796s9M8dcXiG+JQ7kY71x/lP54MYbxdpSh12/f/+OP8PfNNvLyAB448uE59eDPoZA9iOQB7Nf+f/iI9mZja01fF2EeOtFdFmZsf64/xOfNHvRqFxCIgEgherwj7OH+f35SnNzzgDEGqTRJ/Lo762JknTo/nv/AdWA6eMpAw1yEHtldIdlxbZ43syvsV3XhZ6SVOfa1TptTWP7yl5u/aLflOHfZ+DIHVINzPicPf66px81W8R7BxUHkXE61fPv2flX9VXS1U1EUp8KeMOz79n5bf6BWipN6OpV6m08Pr5tDztcChoDWgpt9bteizVtcf3fHzbn5c0O/W5ipheNbSef0/LN/0uUS1aLdJtTBWxx/e0/Hi7lIao9Ef29GLlpL+U00Attx7Uf+ffs7V+bkrWNutOyybt+/MZ+e35fryGLABBRnGYZWBAGrBxOsIf5/fll/lztXUqydr6Anj+PSVf9NumjyErWsiQDMVvzwbpawZCO2p4NP+d/8A2/ZHWMnkZR6+jK8+/Z+bTcsM5dTDeOsyGIKKZbb8+qv/O/97e3J+MAyZ6YSRDcO8Uh8P8cf6z+Xb1mVEZotVLlN7/npL/9f6kABmE+hjngXIn+hh/nN+XX84XAHh9VgRtvjH7/PmkvPn/u5133nnnnXf+cP4nV1L/2bCXDtwAAAAASUVORK5CYII=" alt="QR code for the Collection Pot" />
+            <div>
+              <span class="micro-label">Separate QR</span>
+              <p class="card-copy">Scan to leave a message and/or give a gift, or use the link below.</p>
+              <p class="card-copy" style="margin-top: 8px;">
+                <a class="link" href="https://app.collectionpot.com/pot/3443293" target="_blank" rel="noopener noreferrer">Virtual Guestbook and Gift Pot</a>
+              </p>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <!-- 3 · MAP -->
+      <div class="content" style="padding-top: 0;">
         <article class="map-card">
           <p class="section-kicker">Getting there</p>
           <h2>Redeemer Church &mdash; Foster Avenue, Nottingham NG9 1AE</h2>
@@ -513,33 +566,10 @@
         </article>
       </div>
 
-      <!-- STATUS + UPLOAD -->
+      <!-- 4 · PLAN OF THE DAY  +  5 · STAYING OVER -->
       <div class="content" style="padding-top: 0;">
-        <section class="status" aria-live="polite">
-          <div id="badge" class="status-badge before">Checking&hellip;</div>
-          <h2 id="statusTitle" class="status-title">Please wait</h2>
-          <p id="statusCopy" class="status-copy"></p>
+        <section class="info-grid-2">
 
-          <div id="countdown" class="countdown hidden" aria-label="Countdown timer">
-            <div class="countdown-item"><span class="countdown-value" id="days">00</span><span class="countdown-label">Days</span></div>
-            <div class="countdown-item"><span class="countdown-value" id="hours">00</span><span class="countdown-label">Hours</span></div>
-            <div class="countdown-item"><span class="countdown-value" id="minutes">00</span><span class="countdown-label">Minutes</span></div>
-            <div class="countdown-item"><span class="countdown-value" id="seconds">00</span><span class="countdown-label">Seconds</span></div>
-          </div>
-
-          <div class="actions">
-            <a id="uploadButton" class="button button-primary hidden" href="#" rel="noopener noreferrer">Open photo upload</a>
-            <button id="copyButton" class="button button-secondary hidden" type="button">Copy upload link</button>
-          </div>
-
-          <p class="tiny" id="scheduleLine"></p>
-          <p class="tiny" id="configHint"></p>
-        </section>
-
-        <!-- INFO CARDS -->
-        <section class="info-grid">
-
-          <!-- 1 · Wedding Details -->
           <article class="info-card">
             <p class="section-kicker">The day</p>
             <h2>Ceremony &amp; cake celebration</h2>
@@ -568,36 +598,22 @@
             </div>
           </article>
 
-          <!-- 2 · Accommodation -->
           <article class="info-card">
             <p class="section-kicker">Staying over?</p>
             <h2>Nearby accommodation</h2>
             <p class="card-copy">If you&rsquo;re travelling from further afield, here are a couple of nearby options within about ten minutes of the church.</p>
             <div class="facts">
               <div class="fact">
+                <strong>Village Hotel</strong>
+                <p class="card-copy">Approximately 5 minutes drive from the church.<br>Brailsford Way, Nottingham NG9 6DL.</p>
+              </div>
+              <div class="fact">
                 <strong>Travelodge Beeston</strong>
                 <p class="card-copy">Approximately 10 minutes from the church.<br>Nottingham NG8 2NR.</p>
               </div>
               <div class="fact">
                 <strong>Orchard Hotel</strong>
-                <p class="card-copy">On the University Park campus, approximately 10 minutes&rsquo; drive.<br>Nottingham NG7 2RJ.</p>
-              </div>
-            </div>
-          </article>
-
-          <!-- 3 · Collection Pot -->
-          <article class="info-card">
-            <p class="section-kicker">Collection Pot</p>
-            <h2>Messages &amp; gifts</h2>
-            <p class="card-copy">Leave us a message or contribute towards our honeymoon and home. This is completely separate from the photo upload.</p>
-            <div class="collection-row">
-              <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXIAAAFyAQAAAADAX2ykAAACe0lEQVR4nO2bTYrcMBBGX0WGXtqQA8xR3DfIkXKm3MA6Sh9gwFoOqPmykGR7MhkmIR6nDVUL05bfoqD4VD9Sm/gbi1/+CgfnnXfeeeedd/493qp1AHeza1p/tW/XA/1xfmd+lCTNQByCgLtBukgTQZKk1/xn++P8znyqCrVrMoM+Y1fuda0K+0h/nN+H796s9M8dcXiG+JQ7kY71x/lP54MYbxdpSh12/f/+OP8PfNNvLyAB448uE59eDPoZA9iOQB7Nf+f/iI9mZja01fF2EeOtFdFmZsf64/xOfNHvRqFxCIgEgherwj7OH+f35SnNzzgDEGqTRJ/Lo762JknTo/nv/AdWA6eMpAw1yEHtldIdlxbZ43syvsV3XhZ6SVOfa1TptTWP7yl5u/aLflOHfZ+DIHVINzPicPf66px81W8R7BxUHkXE61fPv2flX9VXS1U1EUp8KeMOz79n5bf6BWipN6OpV6m08Pr5tDztcChoDWgpt9bteizVtcf3fHzbn5c0O/W5ipheNbSef0/LN/0uUS1aLdJtTBWxx/e0/Hi7lIao9Ef29GLlpL+U00Attx7Uf+ffs7V+bkrWNutOyybt+/MZ+e35fryGLABBRnGYZWBAGrBxOsIf5/fll/lztXUqydr6Anj+PSVf9NumjyErWsiQDMVvzwbpawZCO2p4NP+d/8A2/ZHWMnkZR6+jK8+/Z+bTcsM5dTDeOsyGIKKZbb8+qv/O/97e3J+MAyZ6YSRDcO8Uh8P8cf6z+Xb1mVEZotVLlN7/npL/9f6kABmE+hjngXIn+hh/nN+XX84XAHh9VgRtvjH7/PmkvPn/u5133nnnnXf+cP4nV1L/2bCXDtwAAAAASUVORK5CYII=" alt="QR code for the Collection Pot" />
-              <div>
-                <span class="micro-label">Separate QR</span>
-                <p class="card-copy">Scan for the Collection Pot only, or use the link below.</p>
-                <p class="card-copy" style="margin-top: 8px;">
-                  <a class="link" href="https://app.collectionpot.com/pot/3443293" target="_blank" rel="noopener noreferrer">Open Collection Pot &#8599;</a>
-                </p>
+                <p class="card-copy">On the University Park campus, approximately 10 minutes drive.<br>Nottingham NG7 2RJ.</p>
               </div>
             </div>
           </article>
@@ -628,11 +644,11 @@
     const CONFIG = {
       coupleNames:           'Tyrone & Debs',
       eventLabel:            'Tyrone & Debs Wedding',
-      openAt:                '2026-04-16T00:01:00+01:00',  // ⚠️ TESTING — restore to 2026-05-23T00:01:00+01:00
-      closeAt:               '2026-04-17T23:59:00+01:00',  // ⚠️ TESTING — restore to 2026-05-26T23:00:00+01:00
+      openAt:                '2026-04-18T00:01:00+01:00',  // ⚠️ TESTING — restore to 2026-05-23T00:01:00+01:00
+      closeAt:               '2026-04-20T23:59:00+01:00',  // ⚠️ TESTING — restore to 2026-05-26T23:00:00+01:00
       dropboxFileRequestUrl: 'https://www.dropbox.com/request/zygp8o0w2xbzagu853ol',
       uploadPageLabel:       'Open photo upload',
-      introText:             'We\u2019d love to see the candid moments you captured on our wedding day. Your photos go into our private Dropbox request \u2014 only we can review them unless we choose to share them later.',
+      introText:             'We\u2019d love to see the candid moments you captured on our wedding day. Your photos go into our private Dropbox request \u2014 only we can see them unless we choose to share them later.',
       uploadTimezone:        'Europe/London'
     };
 
@@ -690,7 +706,7 @@
       els.badge.className         = 'status-badge open';
       els.badge.textContent       = 'Uploads open';
       els.statusTitle.textContent = 'You can upload your wedding photos now';
-      els.statusCopy.textContent  = 'Thank you for celebrating with us. Tap the button below and Dropbox will handle the upload securely \u2014 no Dropbox account needed.';
+      els.statusCopy.textContent  = 'Thank you for celebrating with us. Tap the button below and Dropbox will handle the upload securely — no Dropbox account needed.';
       els.countdown.classList.remove('hidden');
       els.uploadButton.classList.remove('hidden');
       els.copyButton.classList.remove('hidden');
@@ -749,7 +765,7 @@
         els.copyButton.textContent = 'Link copied \u2713';
         setTimeout(() => { els.copyButton.textContent = orig; }, 1800);
       } catch {
-        window.prompt('Copy this upload link:', CONFIG.dropboxFileRequestUrl);
+        t('Copy this upload link:', CONFIG.dropboxFileRequestUrl);
       }
     });
 
